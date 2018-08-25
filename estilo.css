@@ -1,0 +1,34 @@
+*{
+  font-family: sans-serif;
+  margin: 0px;
+}
+
+body{
+  background-color: rgb(240, 239, 236);
+}
+.padre {
+  background: rgb(82, 85, 119);
+  height: 250px;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.hijo {
+  color: rgb(250, 250, 250);
+  background: rgb(54, 54, 54);
+  width: 750px;
+}
+
+pre{
+  background-color: rgb(212, 25, 54);
+  font-family: 'Asap';
+}
+
+pre a {
+  color: rgb(235, 255, 0);
+  text-decoration: none;
+  font-family: 'Gloria Hallelujah'
+}
