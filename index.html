@@ -10,11 +10,44 @@
 </head>
 <body>
 
+  <div class="padre">
+  <div class="hijo">
+    <h4>Values & Types</h4>
+    As we asserted in Chapter 1, JavaScript has typed values, not typed
+    variables. The following built-in types are available:
+    • string
+    • number
+    • boolean
+    • null and undefined
+    • object
+    • symbol (new to ES6)
+    JavaScript provides a typeof operator that can examine a value and
+    tell you what type it is:
+    <pre>
+      var a;
+      typeof a; <a href="">// "undefined"</a>
+      a = "hello world";
+      typeof a; <a href="">//"string"</a>
+      a = 42;
+      typeof a; <a href="">// "number"</a>
+      a = true;
+      typeof a; <a href="">// "boolean"</a>
+      a = null;
+      typeof a; <a href="">// "object"--weird, bug</a>
+      a = undefined;
+      typeof a; <a href="">// "undefined"</a>
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
 
 
   <div class="padre">
   <div class="hijo">
-    Variables Basicas 0
+    <h4>Funciones Basicas 0</h4>
     <pre>
       var nombre; <a>//Variable</a>
       nombre = prompt("ingresa tu nombre"); <a href="">//Abre pantalla emergente preguntando nombre</a>
@@ -36,7 +69,7 @@
 
   <div class="padre">
   <div class="hijo">
-    Compound Assigment
+    <h4>Compound Assigment</h4>
     <pre>
       +=, -=, *=, and /=
       are compound operators that combine a math operation with assignment,
@@ -51,6 +84,7 @@
 
   <div class="padre">
   <div class="hijo">
+    <h4>Coercion</h4>
     If you have a number but need to print it on the screen, you need to convert the value to a string, and in
     JavaScript this conversion is called “coercion.”
     <pre>
@@ -68,7 +102,90 @@
 
   <div class="padre">
   <div class="hijo">
-    Variables Basicas 0
+    <h4>Variables Basicas</h4>
+    JavaScript uses the latter approach, dynamic typing, meaning variables
+    can hold values of any type without any type enforcement.
+    As mentioned earlier, we declare a variable using the var statement
+    —notice there’s no other type information in the declaration. Consider
+    this simple program:
+    <pre>
+      var amount = 99.99;
+      amount = amount * 2;
+      console.log( amount );  <a href="">// 199.98</a>
+      <a href="">// convert `amount` to a string, and</a>
+      <a href="">// add "$" on the beginning</a>
+      amount = "$" + String( amount );
+      console.log( amount ); <a href="">// "$199.98"</a>
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Variables Basicas</h4>
+    This is more typically called constants, when you declare a variable
+    with a value and intend for that value to not change throughout the
+    program.
+    You declare these constants, often at the top of a program, so that it’s
+    convenient for you to have one place to go to alter a value if you
+    need to. By convention, JavaScript variables as constants are usually
+    capitalized, with underscores _ between multiple words.
+    <pre>
+      var TAX_RATE = 0.08; <a href="">// 8% sales tax</a>
+      var amount = 99.99;
+      amount = amount * 2;
+      amount = amount + (amount * TAX_RATE);
+      console.log( amount ); <a href="">// 215.9784</a>
+      console.log( amount.toFixed( 2 ) ); <a href="">// "215.98"</a>
+      <a href="">
+        Similar to how console.log(..) is a function log(..) accessed as an object property on the
+        console value, toFixed(..) here is a function that can be accessed on number values.
+        JavaScript numbers aren’t automatically formatted for dollars—
+        the engine doesn’t know what your intent
+        is, and there’s no type for currency. toFixed(..)
+        lets us specify how many decimal places we’d
+        like the number rounded to, and it produces the
+        string as necessary.
+      </a>
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Variables Constantes</h4>
+    The newest version of JavaScript at the time of this writing (commonly
+    called “ES6”) includes a new way to declare constants, by
+    using const instead of var:
+    <pre>
+      const TAX_RATE = 0.08;
+      var amount = 99.99;
+      <a href="">Constants are useful just like variables with unchanged values,
+      except that constants also prevent accidentally changing value somewhere
+      else after the initial setting. If you tried to assign any different
+      value to TAX_RATE after that first declaration, your program would
+      reject the change (and in strict mode, fail with an error—see “Strict
+      Mode” on page 45 in Chapter 2).</a>
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
     <pre>
 
     </pre>
@@ -79,6 +196,109 @@
   </div>
   </div>
 
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4></h4>
+    <pre>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
 
 </body>
 </html>
