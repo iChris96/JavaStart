@@ -25,17 +25,17 @@
     tell you what type it is:
     <pre>
       var a;
-      typeof a; <a href="">// "undefined"</a>
+      typeof a; <a href="">  // "undefined"</a>
       a = "hello world";
-      typeof a; <a href="">//"string"</a>
+      typeof a; <a href="">  //"string"</a>
       a = 42;
-      typeof a; <a href="">// "number"</a>
+      typeof a; <a href="">  // "number"</a>
       a = true;
-      typeof a; <a href="">// "boolean"</a>
+      typeof a; <a href="">  // "boolean"</a>
       a = null;
-      typeof a; <a href="">// "object"--weird, bug</a>
+      typeof a; <a href="">  // "object"--weird, bug</a>
       a = undefined;
-      typeof a; <a href="">// "undefined"</a>
+      typeof a; <a href="">  // "undefined"</a>
     </pre>
     <script>
 
@@ -185,9 +185,28 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>While vS Do While</h4>
+    The only practical difference between these loops is whether the
+    conditional is tested before the first iteration (while) or after the
+    first iteration (do..while).
     <pre>
+      while (numOfCustomers > 0) {
+      console.log( "How may I help you?" );
 
+      <a href="">// help the customer...</a>
+
+      numOfCustomers = numOfCustomers - 1;
+      }
+
+      <a href="">// versus:</a>
+
+      do {
+      console.log( "How may I help you?" );
+
+      <a href="">// help the customer...</a>
+
+      numOfCustomers = numOfCustomers - 1;
+      } while (numOfCustomers > 0);
     </pre>
     <script>
 
@@ -198,9 +217,28 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Scope</h4>
+    scope (technically called
+    lexical scope). In JavaScript, each function gets its own scope. Scope
+    is basically a collection of variables as well as the rules for how those
+    variables are accessed by name. Only code inside that function can
+    access that function’s scoped variables.
     <pre>
+      function one() {
+      <a href="">// this `a` only belongs to the `one()` function</a>
+      var a = 1;
+      console.log( a );
+      }
 
+      function two() {
+      <a href="">// this `a` only belongs to the `two()` function</a>
+      var a = 2;
+      console.log( a );
+      }
+      <a href="">one(); // 1
+   two(); // 2
+      </a>
+      Also, a scope can be nested
     </pre>
     <script>
 
@@ -211,22 +249,31 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Scoope 2</h4>
+    If one scope is nested inside another, code inside the innermost scope
+    can access variables from either scope.
     <pre>
+      function outer() {
+        var a = 1;
 
-    </pre>
-    <script>
+        function inner() {
+          var b = 2;
+          <a href="">// we can access both `a` and `b` here</a>
+            console.log( a + b ); <a href="">// 3</a>
+        }
 
-    </script>
+        inner();
 
-  </div>
-  </div>
+        <a href="">// we can only access `a` here</a>
+        console.log( a ); <a href="">// 1</a>
+      }
+      outer();
 
-  <div class="padre">
-  <div class="hijo">
-    <h4></h4>
-    <pre>
-
+      <a href="">//Lexical scope rules say that code in one scope can access variables of
+        either that scope or any scope outside of it.
+        So, code inside the inner() function has access to both variables a
+        and b, but code only in outer() has access only to a—it cannot
+        access b because that variable is only inside inner()</a>
     </pre>
     <script>
 
