@@ -289,16 +289,17 @@
     When the user clicks anywhere in the document, output "Hello World" in a <p> element with id="demo":
     <pre>
 
-      <a href="">< p id="demo"> /p>
+      < p id="demo"> /p>
 
         < script >
         document.addEventListener("click", function(){
             document.getElementById("demo").innerHTML = "Hello World!";
         });
-        < /script ></a>
+        < /script >
         <a href="">//Da un click en cualquier lugar!</a>
         <a href="">//El evento keydown es lanzado cuando una tecla es presionada
           y produce un caracter</a>
+          <a href="">//El evento transitionend es lanzado cuando una transición CSS se ha completado.</a>
     </pre>
     <p id="demo"></p>
     <script>
@@ -341,12 +342,45 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>.classList.add("");</h4>
+    Add the "mystyle" class to a < div> element:
     <pre>
+      < style>
+      .mystyle {
+        width: 300px;
+        height: 50px;
+        background-color: coral;
+        color: white;
+        font-size: 25px;
+      }
+      < /style>
 
+      < button onclick="myFunction()">Try it< /button>
+
+      < div id="myDIV">I am a DIV element < /div>
+      < script>
+      function myFunction() {
+          document.getElementById("myDIV").classList.add("mystyle"); <a href="">agrega una
+            clase css a el elemento myDiv</a>
+      }
+      < /script>
     </pre>
+    <style>
+    .mystyle {
+        width: 300px;
+        height: 50px;
+        background-color: coral;
+        color: white;
+        font-size: 25px;
+    }
+    </style>
+    <button onclick="myFunction2()">Try it</button>
+    <div id="myDIV">I am a DIV element </div>
     <script>
 
+    function myFunction2() {
+    document.getElementById("myDIV").classList.add("mystyle");
+    }
     </script>
 
   </div>
@@ -354,9 +388,45 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Funcion Flecha</h4>
+    Las funciones flecha son una de las novedades ES6 (ECMAScript 2015) que más pueden
+    desconcertar a los desarrolladores tradicionales.
     <pre>
+        <a href="">//Sintaxis ( param1, param2, ...rest ) => { expression; }</a>
+        var add = ( x, y ) => x + y;
+        console.info( add( 2, 4 ) ); <a href="">// 6</a>
+        console.info( add( 4, 4 ) ); <a href="">// 8</a>
+        console.info( add( 1, 2 ) ); <a href="">// 3</a>
 
+        <a href="">//Es igual a </a>
+
+        function add ( a, b ) {
+          return a + b;
+        }
+
+        <a href="">//Si solo tenemos un parámetro, podemos obviar el paréntesis:</a>
+
+        var double = x => x * 2;
+
+        console.info( double( 2 ) ); <a href="">// 4</a>
+        console.info( double( 5 ) ); <a href="">// 10</a>
+
+        <a href="">//Si no necesitamos parámetros, tenemos que incluir el paréntesis vacío:</a>
+
+        var hi = () => 'Hello World';
+
+        console.info( hi() ); // Hello World
+
+        <a href="">//Si necesitamos incluir varias instrucciones en nuestra función,
+          entonces necesitamos incluir las clásicas llaves y el retorno:</a>
+
+      var foo = ( param1, param2 ) => {
+      var result;
+
+    <a href="">// Do amazings things here...</a>
+
+      return result;
+    };
     </pre>
     <script>
 
