@@ -437,8 +437,39 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>DOM</h4>
+    El Modelo de Objetos del Documento (DOM) es una interfaz de programación de aplicaciones (API)
+    para documentos HTML y XML. Define la estructura lógica de los documentos y el modo en
+    que se accede y manipula un documento. En la especificación del DOM, el término "documento"
+    se utiliza en un sentido amplio. XML se utiliza cada vez más como un medio para representar
+    muchas clases diferentes de información que puede ser almacenada en sistemas diversos,
+    y mucha de esta información se vería, en términos tradicionales, más como datos que
+    como documentos. Sin embargo, XML presenta estos datos como documentos, y se puede usar
+    el DOM para manipular estos datos.
+
+    Con el Modelo de Objetos del Documento los programadores pueden construir documentos, navegar
+    por su estructura, y añadir, modificar o eliminar elementos y contenido. Se puede acceder a
+    cualquier cosa que se encuentre en un documento HTML o XML, y se puede modificar, eliminar o
+    añadir usando el Modelo de Objetos del Documento, salvo algunas excepciones. En particular,
+    aún no se han especificado las interfaces DOM para los subconjuntos internos y externos de XML.
     <pre>
+        < div id="div-subtitulo">< /div>
+
+        <a href="">//crear elemento</a>
+        var elemento = document.createElement("h2");
+
+        <a href="">//crear nodo de texto</a>
+        var contenido = document.createTextNode("Este es nuestro texto");
+
+        <a href="">//añadir el nodo de texto al elemento</a>
+        elemento.appendChild(contenido); <a href="">//meter texto al elemento</a>
+
+        <a href="">//agregar atributos al elemento</a>
+        elemento.setAtribute("aling", "center");
+
+        <a href="">//Agregar elemento al documento //se agrega el elemento al div-subtitulo</a>
+        document.getElementById("div-subtitulo").appendChild(elemento);
+
 
     </pre>
     <script>
@@ -450,9 +481,11 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Window setInterval()</h4>
+    Alert "Hello" every 3 seconds (3000 milliseconds):
     <pre>
-
+        setInterval(function(){ alert("Hello"); }, 3000);
+        <a href="">//a a llamar la funcion cada 3000s</a>
     </pre>
     <script>
 
