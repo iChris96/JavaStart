@@ -512,8 +512,177 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Array.prtotype.filter()</h4>
+    El método filter() crea un nuevo array con todos los elementos
+    que cumplan la condición implementada por la función dada
     <pre>
+
+      var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+      const result = words.filter(word => word.length > 6);
+
+      console.log(result);
+      <a href="">// expected output: Array ["exuberant", "destruction", "present"]</a>
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Array.prototype.map()</h4>
+    El método map() crea un nuevo array con los resultados de la
+    llamada a la función indicada aplicados a cada uno de sus elementos.
+    <pre>
+
+    var numbers = [1, 5, 10, 15];
+    var doubles = numbers.map(function(x) {
+       return x * 2;
+    });
+    <a href="">// doubles is now [2, 10, 20, 30]</a>
+    <a href="">// numbers is still [1, 5, 10, 15]</a>
+
+    var numbers = [1, 4, 9];
+    var roots = numbers.map(Math.sqrt);
+    <a href="">// roots is now [1, 2, 3]</a>
+    <a href="">// numbers is still [1, 4, 9]</a>
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Array.prototype.sort()</h4>
+    El método sort() ordena los elementos de un array localmente y devuelve el array. La ordenación no es necesariamente estable. El modo de ordenación por defecto responde
+    a la posición del valor del string de acuerdo a su valor
+    <pre>
+      var frutas = ['guindas', 'manzanas', 'bananas'];
+      frutas.sort(); <a href="">// ['bananas', 'guindas', 'manzanas']</a>
+      <a href="">//Ordena por ascii, Cherry < bananas por la C mayus</a>
+
+      var puntos = [1, 10, 2, 21];
+      puntos.sort(); // [1, 10, 2, 21]
+      <a href="">// Tenga en cuenta que 10 viene antes que 2</a>
+
+      <a href="">//Una funcion compare regresa -1 o 1 , regresa 0 si los elementos son iguales </a>
+      function compare(a, b) {
+      if (a es menor que b según criterio de ordenamiento) {
+        return -1;
+      }
+      if (a es mayor que b según criterio de ordenamiento) {
+        return 1;
+      }
+      // a debe ser igual b
+      return 0;
+      }
+
+      var arr = [ 40, 1, 5, 200 ];
+      function comparar ( a, b ){ return a - b; } <a href="">//a = -1 b = 1</a>
+      arr.sort( comparar ); <a href=""> // [ 1, 5, 40, 200 ]</a>
+
+      <a href="">//Lo mismo pero una función anónima normal:</a>
+
+      var arr = [ 40, 1, 5, 200 ];
+      arr.sort(function(a,b){return a - b;});  <a href="">// [ 1, 5, 40, 200 ]</a>
+
+      <a href="">//Lo mismo pero usando funcion Flecha</a>
+      var arr = [ 40, 1, 5, 200 ];
+      arr.sort((a,b)=>a-b);  <a href="">// [ 1, 5, 40, 200 ]</a>
+
+      <a href="">//Ordenando array inventores .year = fecha nacimiento</a>
+      const ordered = inventors.sort(function(primer_a_comparar, segundo_a_comparar){
+
+        if(primer_a_comparar.year > segundo_a_comparar.year){
+          return 1;
+        }else{
+          return -1;
+        }
+
+      });
+
+
+    </pre>
+    <script>
+
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Array.prototype.reduce()</h4>
+    El método reduce() aplica una función a un acumulador y a cada valor de un array
+    (de izquierda a derecha) para reducirlo a un único valor.
+    <pre>
+
+      valorAnterior
+        <a href="">//El valor devuelto (retornado) en la llamada anterior de la función, o el
+          valorInicial, si se proveyó. </a>
+
+      ValorActual
+        <a href="">//que está siendo procesado en el array.</a>
+
+      indiceActual
+        <a href="">//Índice del elemento actual que está siendo procesado en el array.</a>
+
+        [0,1,2,3,4].reduce(function(valorAnterior, valorActual, indice, vector){
+          return valorAnterior + valorActual;
+        });
+
+        <a href="">// Primera llamada</a>
+        valorAnterior = 0, valorActual = 1, indice = 1
+
+        <a href="">// Segunda llamada</a>
+        valorAnterior = 1, valorActual = 2, indice = 2
+
+        <a href="">// Tercera llamada</a>
+        valorAnterior = 3, valorActual = 3, indice = 3
+
+        <a href="">// Cuarta llamada</a>
+        valorAnterior = 6, valorActual = 4, indice = 4
+
+
+        <a href="">//Esto con el fin de remplazar a :</a>
+
+        var total = 0;
+
+        for(var i=0;i< array.length;i++)
+          total += array[i].años
+
+        <a href="">------------------</a>
+        <a href="">//inventor = arreglo</a>
+        <a href="">//total = donde se hara la suma de la edad de todos los inventores</a>
+        <a href="">//.passed = fecha when difunto</a>
+        <a href="">//.year = fecha nacimiento</a>
+        const totalYears = inventors.reduce((total, inventor) => { <a href="">//total se inicializa aqui</a>
+            return total + (inventor.passed - inventor.year); <a href="">//total es la variable que servira como suma</a>
+        },0); <a href="">//el 0 es pera darle valor a total, total = 0</a>
+
+
+        <a href="">---------------------------------------</a>
+        <a href="">//Cuantos hay de cada objeto</a>
+        const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+        const transportation = data.reduce(function(obj, item) {
+          if (!obj[item]) {  <a href="">//if 777 //si el conteo de "carros" es 0 entra</a>
+            obj[item] = 0; <a href="">//item = car o truck o van</a>
+          }
+          obj[item]++;
+          return obj;
+        }, {
+          <a href="">//en vez de meter variables de conteo, usamos el if 777</a>
+        });
+        console.log(transportation);
+
 
     </pre>
     <script>
@@ -548,6 +717,5 @@
 
   </div>
   </div>
-
 </body>
 </html>
