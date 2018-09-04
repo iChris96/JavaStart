@@ -694,11 +694,75 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
+    <h4>Objets</h4>
+    The object type refers to a compound value where you can set properties (named locations) that each hold their own values of any type.
+    This is perhaps one of the most useful value types in all of JavaScript.
     <pre>
+      var obj = {
+    	a: "hello world",
+        c: true,
+       'hola jeje!': 50
+    };
 
+
+    //dot notation
+    obj.a;		<a href="">// "hello world"</a>
+    obj.b;		<a href="">// 42</a>
+    obj.c;		<a href="">// true</a>
+
+    //bracket notation
+    obj["a"];	<a href="">// "hello world"</a>
+    obj["b"];	<a href="">// 42</a>
+    obj["c"];	<a href="">// true</a>
+    obj["hola jeje!"]; <a href="">//llamar objetos de esta manera es util cuando hay variables como hola jeje!</a>
     </pre>
     <script>
+    var obj = {
+    	a: "hello world",
+    	b: 42,
+    	c: true,
+      'hola jeje!': 50
+    };
+
+    obj.a;		// "hello world"
+    obj.b;		// 42
+    obj.c;		// true
+
+    obj["a"];	// "hello world"
+    obj["b"];	// 42
+    obj["c"];	// true
+    </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+    <h4>Objets2</h4>
+    Of course, bracket notation is also useful if you want to access a
+    property/key but the name is stored in another variable, such as:
+    <pre>
+      var obj = {
+    	a: "hello world",
+    	b: 42
+      };
+
+      var b = "a"; <a href="">//guarda el valor de la variable a del obj </a>
+
+      obj[b];	<a href="">//"hello world"</a>
+      obj["b"];   <a href="">//42</a>
+      obj.b;  <a href="">//42</a>
+      obj.a;  <a href="">//"hello world"</a>
+      obj[a];  <a href="">//error   </a>
+    </pre>
+    <script>
+    var obj2 = {
+      aa: "hello",
+      bb:  42
+    }
+
+    var bb = "aa";
+
 
     </script>
 
@@ -707,13 +771,617 @@
 
   <div class="padre">
   <div class="hijo">
-    <h4></h4>
-    <pre>
+  <h4>Arrays</h4>
+  An array is an object that holds values (of any type) not particularly in
+  named properties/keys, but rather in numerically indexed positions. For example:
+  <pre>
+    var arr = [
+  	"hello world",
+  	42,
+  	true
+    ];
 
-    </pre>
-    <script>
+  arr[0];			<a href="">// "hello world"</a>
+  arr[1];			<a href="">// 42</a>
+  arr[2];			<a href="">// true</a>
+  arr.length;		<a href="">// 3</a>
 
-    </script>
+  typeof arr;		<a href="">// "object"</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Truthy & Falsy</h4>
+  <pre>
+    The specific list of "falsy" values in JavaScript is as follows:
+
+    <a href="">"" (empty string)
+      0, -0, NaN (invalid number)
+      null, undefined
+      false</a>
+
+
+    Any value that's not on this "falsy" list is "truthy." Here are some examples of those:
+
+    <a href="">  "hello"
+      42
+      true
+      [ ], [ 1, "2", 3 ] (arrays)
+      { }, { a: 42 } (objects)
+      function foo() { .. } (functions)</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Equality</h4>
+  <pre>
+  The difference between == and === is usually characterized that == checks for value equality
+  and === checks for both value and type equality. However, this is inaccurate.
+
+  == usa Coercion
+  === no usa coercion
+
+  var a = "42";
+  var b = 42;
+
+  a == b;			<a href="">// true</a>
+  a === b;		<a href="">// false</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Hoisting</h4>
+  Wherever a var appears inside a scope, that declaration is taken to
+  belong to the entire scope and accessible everywhere throughout.
+
+  Metaphorically, this behavior is called hoisting, when a var declaration is
+  conceptually "moved" to the top of its enclosing scope. Technically, this
+  process is more accurately explained by how code is compiled, but we
+  can skip over those details for now.
+  <pre>
+  var a = 2;
+
+  foo();				<a href="">  // works because `foo()`</a>
+  						<a href="">// declaration is "hoisted"</a>
+
+  function foo() {
+  	a = 3;
+
+  	console.log( a );	<a href="">// 3</a>
+
+  	var a;			<a href="">  // declaration is "hoisted"</a>
+  					<a href="">  // to the top of `foo()`</a>
+  }
+
+  console.log( a ); <a href="">//2</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Nested Scopes</h4>
+  When you declare a variable, it is available
+  anywhere in that scope, as well as any lower/inner scopes. For example:
+  <pre>
+    function foo() {
+  	var a = 1;
+
+  	function bar() {
+  		var b = 2;
+
+  		function baz() {
+  			var c = 3;
+
+  			console.log( a, b, c );	<a href="">// 1 2 3 <<<< primero en ejecutarse</a>
+  		}
+
+  		baz();
+  		console.log( a, b );		<a href="">// 1 2</a>
+      <a href="">     //console.log( a, b, c );    error</a>
+  	}
+
+  	bar();
+  	console.log( a );			<a href="">  // 1 <<<< ultimo en ejecutarse </a>
+  }
+
+  foo();
+
+  <a href="">//Notice that c is not available inside of bar(), because it's declared only inside
+    the inner baz() scope, and that b is not available to foo() for the same reason.
+
+    If you try to access a variable's value in a scope where it's not available,
+    you'll get a ReferenceError thrown.</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Strict Mode</h4>
+  ES5 added a "strict mode" to the language, which tightens the rules for certain behaviors.
+  Generally, these restrictions are seen as keeping the code to a safer and
+  more appropriate set of guidelines. Also, adhering to strict mode makes your code
+  generally more optimizable
+  by the engine. Strict mode is a big win for code, and you should use it for all your programs.
+  <pre>
+    function foo() {
+  	"use strict";
+
+  	<a href="">// this code is strict mode</a>
+
+  	function bar() {
+  		<a href="">// this code is strict mode</a>
+  	}
+  }
+
+  <a href="">// this code is not strict mode</a>
+
+  <a href="">----------------------------------------------------------------</a>
+
+  Compare that to:
+
+    "use strict";
+
+    function foo() {
+    	<a href="">// this code is strict mode</a>
+
+    	function bar() {
+    		<a href="">// this code is strict mode</a>
+    	}
+    }
+
+  <a href="">  // this code is strict mode</a>
+
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Closure</h4>
+  Puede pensar en el closure como una forma de "recordar" y continuar accediendo al alcance
+  de una función (sus variables) incluso una vez que la función haya terminado de ejecutarse.
+  <pre>
+    function makeAdder(x) {
+  	<a href="">// parameter `x` is an inner variable
+      // inner function `add()` uses `x`, so
+      // it has a "closure" over it</a>
+  	function add(y) {
+  		return y + x;
+  	};
+
+  	return add;
+  }
+  <a href="">The reference to the inner add(..) function that gets returned with each call
+    to the outer makeAdder(..) is able
+    to remember whatever x value was passed in to makeAdder(..). Now, let's use makeAdder(..):</a>
+
+
+  var plusOne = makeAdder( 1 ); <a href="">//x = 1</a>
+
+  var plusTen = makeAdder( 10 ); <a href="">//x = 10</a>
+
+  plusOne( 3 );		// 4  < -- 1 + 3
+  plusOne( 41 );		// 42 < -- 1 + 41
+
+  plusTen( 13 );		// 23 < -- 10 + 13
+
+  <a href="">//When we call makeAdder(1), we get back a reference to its inner add(..)
+    that remembers x as 1. We call this function reference plusOne(..).
+
+    When we call makeAdder(10), we get back another reference to its inner add(..) that
+    remembers x as 10. We call this function reference plusTen(..).
+
+    When we call plusOne(3), it adds 3 (its inner y) to the 1 (remembered by x),
+    and we get 4 as the result.
+
+    When we call plusTen(13), it adds 13 (its inner y) to the 10 (remembered by x),
+    and we get 23 as the result.</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Modules</h4>
+  El uso más común de cierre en JavaScript es el patrón del módulo. Los módulos
+  le permiten definir detalles privados de implementación (variables, funciones)
+  que están ocultos del mundo
+  exterior, así como una API pública a la que se puede acceder desde el exterior.
+  <pre>
+    <a href="">//The User() function serves as an outer scope that holds the variables
+      username and password, as well as the inner doLogin() function; these are all private
+      inner details of this User module that cannot be accessed from the outside world.</a>
+    function User(){
+  	var username, password;
+
+  	function doLogin(user,pw) {
+  		username = user; <a href="">//The inner doLogin() function has a closure over
+                                username and password, meaning it will
+                                retain its access to them even after the User() function
+                                finishes running.</a>
+  		password = pw;
+
+    		<a href="">// do the rest of the login work</a>
+    	}
+
+    	var publicAPI = {
+    		login: doLogin
+    	};
+
+    	return publicAPI;
+    }
+
+    <a href="">// create a `User` module instance</a>
+    var fred = User(); <a href="">//Executing User() creates an instance of the User module -- a
+      whole new scope is created, and thus a whole new copy of each of these inner
+      variables/functions. We assign this instance to fred.
+      If we run User() again, we'd get a new instance entirely separate from fred.</a>
+
+    fred.login( "fred", "12Battery34!" );
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>this</h4>
+  If a function has a this reference inside it, that this
+  reference usually points to an object. But which object it points to depends
+  on how the function was called.
+
+  It's important to realize that this does not refer to the function itself, as
+  is the most common misconception.
+  <pre>
+    function foo() {
+  	console.log( this.bar );
+  }
+
+  var bar = "global";
+
+  var obj1 = {
+  	bar: "obj1",
+  	foo: foo
+  };
+
+  var obj2 = {
+  	bar: "obj2"
+  };
+
+  // --------
+
+  foo();				<a href="">// "global"</a>
+  obj1.foo();			<a href="">// "obj1"</a>
+  foo.call( obj2 );		<a href="">// "obj2"</a>
+  new foo();			<a href="">// undefined</a>
+
+  <a href="">foo() ends up setting this to the global object in non-strict mode --
+    in strict mode, this would be undefined and you'd get an error in accessing
+    the bar property -- so "global" is the value found for this.bar.
+
+    obj1.foo() sets this to the obj1 object.
+
+    foo.call(obj2) sets this to the obj2 object.
+
+    new foo() sets this to a brand new empty object.</a>
+
+    <a href="">//La palabra clave this está vinculada dinámicamente en función de cómo
+      se ejecuta la función en cuestión, y resulta que hay cuatro reglas
+      simples para comprender y determinar completamente este enlace.</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Prototypes</h4>
+  Cuando hace referencia a una propiedad en un objeto, si esa propiedad no existe,
+  JavaScript usará automáticamente la referencia del prototipo interno de ese
+  objeto para buscar otro objeto para buscar la propiedad. Podrías pensar
+  en esto casi como una alternativa si falta la propiedad.
+  <pre>
+    var foo = {
+  	a: 42
+  };
+
+  <a href="">// create `bar` and link it to `foo`</a>
+  var bar = Object.create( foo );
+
+  bar.b = "hello world";
+
+  bar.b;		<a href="">// "hello world"</a>
+  bar.a;		<a href="">// 42 < -- delegated to `foo`</a>
+
+  <a href="">//bar al no encontrar la propiedad .a en la variable bar, entonces como estaba linkeada
+    a foo con object.create(); entonces buscara la propiedad en foo</a>
+
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>IIFE immediately invoked function expression</h4>
+  La primera razón para usar una IIFE es por la privacidad de los datos.
+  Las variables declaradas con var en Javascript tienen un alcance a nivel de
+  función (solo se pueden usar en la función que las contiene).
+
+  Por esa razón toda variable declarada dentro de una IIFE no puede ser usada
+  por fuera.
+  <pre>
+  <a href="">Primera explesion</a>
+
+  (function () {
+    var foo = "ABC";
+
+    <a href="">// Esto imprime "ABC"</a>
+    console.log(foo);
+  })();  <a href="">//<<<<< iife</a>
+
+  <a href="">// ReferenceError: foo is not defined</a>
+  console.log(foo);
+
+  <a href="">---------------------------------------
+    segunda expression</a>
+
+  function miFuncionInmediata () {
+    var foo = "ABC";
+
+  <a href="">  // Esto imprime "ABC"</a>
+    console.log(foo);
+  }
+
+  miFuncionInmediata();
+
+  <a href="">// ReferenceError: foo is not defined</a>
+  console.log(foo);
+
+  <a href="">//La primera y segunda expresion tienen los mismos resultados pero...
+
+    ¿Entonces por qué nos encontramos a menudo con la primera expresión?
+
+    1-Primero porque estamos asignando un nombre a la función, cuando realmente no
+    se necesita. Estamos ocupando el global namespace,
+    incrementando la posibilidad de que ocurra alguna colisión entre
+    identificadores.
+
+    2- Segundo, el último ejemplo no nos dice que se trata de una IIFE por sí
+    mismo. A diferencia del caso anterior, en donde basta ver el código para
+    saber que se trata de una función anónima que solo necesita ser invocada
+    una vez, inmediatamente luego de su creación.
+
+    3- Dado que la función tiene un nombre, ésta podría ser usada por
+    equivocación más de una vez.
+
+    ----------------------------------------------------------------
+    Debes tener en cuenta que se pueden pasar parámetros a una IIFE:
+    </a>
+
+        var variableExterna = "ABC";
+
+        (function (variableInterna) {
+            <a href="">// Esto imprime "ABC"</a>
+            console.log(variableInterna);
+        })(variableExterna);
+
+        <a href="">Esta es la historia detrás de las IIFEs (Immediately Invoked Function
+          Expressions).
+
+          Esta forma de usar las funciones se usa muy amenudo en patrones y
+          bibliotecas de Javascript</a>
+
+
+
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Clouseres 2</h4>
+  <pre>
+    function greet(){
+    var greeting = "Hi";
+    function greetMe(name){
+    	console.log(`${greeting} ${name}`);
+    }
+    return greetMe;
+  }
+
+  var greet1 = greet();
+  greet1("Miguel");
+
+  <a href="">Ejecutamos la función greet, Se crea un nuevo contexto de ejecución, se guarda
+     espació en memoria para la variable greeting y la función greetMe.
+
+    La función interna greetMe se devuelve con la palabra clave return, digo
+    devuelve por que NO SE EJECUTA. Únicamente estamos devolviendo la función.
+
+    No se crea ningún contexto de ejecución puesto que no ejecutamos la función.
+    Únicamente guardamos la referencia de la función en la variable greet1
+
+    Ejecutamos la función greet1. Empieza a ejecutar el cuerpo de está función
+
+    El motor de JavaScript, V8, creó un contexto de ejecución al llamar a la
+    función greet. Cuando el cuerpo de la función terminó de ser ejecutado este
+    contexto de ejecución fue desechado. No pasó lo mismo con la variable
+    greeting, esta variable sigue estando en memoria. Por lo que al ejecutar
+    la función interna greetMe
+
+    Finalmente el motor de JavaScript encuentra la referencia de greeting y
+    obtiene su valor. Se ejecuta el console.log y nos muestra: Hi Miguel.</a>
+
+  ---------------------------------------
+
+  function Dog (age, name){
+  var age;
+  var name;
+
+  return {
+  	greet: function() {
+    	console.log(`My name is ${name}, I am ${age}`);
+    }
+  }
+}
+
+  var nasus = Dog(420, "Nasus");
+  nasus.greet();
+
+  <a href="">//Los closures tienen una similitud con  las clases de la programación
+    orientada a objetos. Tenemos una clase que tiene propiedades
+     y métodos. Los métodos pueden acceder a las propiedades definidas
+     fuera de los mismos.</a>
+
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Hoisting 2</h4>
+  Comportamiento por defecto de subir declaraciones al inicio de cada scope
+  <pre>
+    (function(){
+      'use strict';
+
+      var result = 0; <a href="">//global dentro de scope</a>
+
+      var sum = function(n1,n2){
+        console.log(result);  <a href="">//0</a>
+        result = n1 + n2; <a href="">//result global</a>
+
+        return result;
+      };
+
+      sum(2, 2);
+      console.log(result); <a href="">//4</a>
+
+    })();
+
+    <a href="">---------------------------------------</a>
+    (function(){
+      'use strict';
+
+      var result = 0; <a href="">//global dentro de scope</a>
+
+      var sum = function(n1,n2){
+        console.log(result);  <a href="">//undefined</a>
+        <a href="">var</a> result = n1 + n2;      <a href="">//que pasa si se hace result local dentro de sum?</a>
+
+        return result;
+      };
+
+      sum(2, 2);
+      console.log(result); <a href="">//0</a>
+
+    })();
+
+    <a href="">---------------------------------------</a>
+    <a href="">Lo que interpreto javascript fue aplicando hosting esto...</a>
+    <a href="">//que por cierto es la manera correcta de declarar las cosas</a>
+
+    (function(){
+      'use strict';
+
+    <a href="">  var result;
+      result = 0;</a>
+
+      var sum = function(n1,n2){
+        var result; <a href="">//subio la declaracion al inicio por si solo</a>
+        console.log(result); <a href="">//undefined</a>
+
+        result = n1 + n2;
+        return result;
+      };
+
+      sum(2, 2);
+      console.log(result); <a href="">//0</a>
+
+    })();
+
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Callbacks</h4>
+  Son funcionesx dentro de otra funcion1 que van a ser llamadas, pero sin
+  especificar a la funcion1 cual de funcionx le llegara como parametro
+  <pre>
+      funcion suma(n1,n2){
+        return suma n1 + n2;
+      }
+
+      funcion uno (name,callback){ <a href="">//le puedes pasar cualquier otra funcion x</a>
+        console.log("eres +" name "y tu suma es: " callback(5,3));
+      }
+
+      uno(juan,suma);
+      <a href="">//uno(pepe,resta);</a>
+  </pre>
+  <script>
+
+  </script>
 
   </div>
   </div>
@@ -721,6 +1389,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
+
   <pre>
 
   </pre>
@@ -734,6 +1403,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
+
   <pre>
 
   </pre>
@@ -747,6 +1417,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
+
   <pre>
 
   </pre>
@@ -760,6 +1431,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
+
   <pre>
 
   </pre>
@@ -773,6 +1445,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
+
   <pre>
 
   </pre>
@@ -786,97 +1459,7 @@
   <div class="padre">
   <div class="hijo">
   <h4></h4>
-  <pre>
 
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-    </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-  <pre>
-
-  </pre>
-  <script>
-
-  </script>
-
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
   <pre>
 
   </pre>
