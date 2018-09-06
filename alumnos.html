@@ -57,6 +57,10 @@
   setMateria(materia){
     this.grades[materia] = [null];
   }
+
+  setMateriaConCalificaciones(materia,valor1,valor2){
+    this.grades[materia] = [valor1,valor2];
+  }
   /*
   addModuleGrade(module, grade){
     this.grade[module].shift = grade;
@@ -66,18 +70,26 @@
   //metodo para agregar calificacion al final de una materia
   setCalificacionAlFinal(materia,valor){
     // condition ? expr1 : expr2
+    try{
     this.grades[materia][0] != null ? this.grades[materia].push(valor) : this.grades[materia][0] = valor;
-
+    }
+    catch(err){
+      console.log("No se encontro la materia");
+    }
   }
 
   setCalificacionAlPrincipio(materia,valor){
     // condition ? expr1 : expr2
+    try{
     this.grades[materia][0] != null ? this.grades[materia].unshift(valor) : this.grades[materia][0] = valor;
+    }
+    catch(err){
+      console.log("No se encontro la materia");
+    }
 
   }
 
 }
-
 
 var michelle = new Student({
   name: 'michellename',
