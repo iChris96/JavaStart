@@ -1368,6 +1368,7 @@
   Son funcionesx dentro de otra funcion1 que van a ser llamadas, pero sin
   especificar a la funcion1 cual de funcionx le llegara como parametro
   <pre>
+  <a href="">//Asincronia: “acciones que no se realizan en la misma línea de tiempo”.</a>
       funcion suma(n1,n2){
         return suma n1 + n2;
       }
@@ -1388,9 +1389,102 @@
 
   <div class="padre">
   <div class="hijo">
-  <h4></h4>
-
+  <h4>Promise</h4>
+  Una Promise (promesa en castellano) es un objeto que representa la terminación o el
+  fracaso eventual de una operación asíncrona. Una promesa puede ser creada usando su constructor. Sin embargo,
+  la mayoría de la gente son consumidores de promesas ya creadas devueltas desde funciones.
   <pre>
+  <a href="">//Esencialmente, una promesa es un objeto devuelto al cual enganchas las funciones callback,
+    en vez de pasar funciones callback a una función.</a>
+  <a href="">//Evita el callback hell (cascada)</a>
+
+  <a href="">//resolve exito, reject fracaso</a>
+  let promesa = new Promise((resolve, reject) => {
+      if(TRUE){ <a href="">//true = exito, false = error</a>
+        resolve('La operacion fue un exito');
+      }else{
+        reject('Ocurrio un error');
+      }
+  });
+
+ <a href="">//then = todo correcto,  catch = fallo </a>
+  promesa
+        .then((response) => { <a href="">//response, lo que envia resolve</a>
+            console.log('Response: ', response);
+        })
+        .catch((error) => {
+            console.log('Error: ', error);
+        })
+
+  <a href="">----------------------------------------------------------------</a>
+  <a href="">//sumando de 2 en 2 con Promise</a>
+
+  var promise = new Promise(function(resolve,reject){
+      resolve(2);
+  });
+
+  promise.then(first).then(second).then(third).then(funcion(response){
+    console.log(response); <a href="">//8</a>
+  })
+
+  function fist(value){
+    return value + 2;
+  }
+
+  function second(value){
+    return value + 2;
+  }
+
+  function third(value){
+    return value + 2;
+  }
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Async</h4>
+  Cuando se llama a una función async, esta devuelve un elemento Promise.
+  Cuando la función async devuelve un valor, Promise se resolverá con el valor devuelto.
+  Si la función async genera una excepción o algún valor, Promise se rechazará con el valor generado.
+  <pre>
+  <a href="">//El operador await es usado para esperar a una Promise. Sólo puede ser usado dentro
+    de una función async function.</a>
+  <a href="">//Asincronia: “acciones que no se realizan en la misma línea de tiempo”.</a>
+
+  function resolveAfter2Seconds(x) { <a href="">//promise normal que retorna el valor que le llega</a>
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(x);
+      }, 2000);
+    });
+  }
+
+
+  async function add1(x) {
+    const a = await resolveAfter2Seconds(20); <a href="">//espera a que la promesa termine</a>
+    const b = await resolveAfter2Seconds(30); <a href="">//2segundos por operacion</a>
+    return x + a + b;
+  }
+
+  add1(10).then(valor => { <a href="">//valor = x + a + b;</a>
+    console.log(valor);  <a href="">// prints 60 after 4 seconds.</a>
+  });
+
+  <a href="">//Las promesas en Javascript nos sirven como alternativa para el manejo de
+    nuestras funciones callbacks en Javascript. Así mismo, nos permiten administrar
+    procesos asíncronos de una forma sencilla y mejor. Sin embargo, mientras que las promesas
+    son una mejor alternativa en lugar de utilizar funciones callback, siguen utilizando muchos
+    then's lo que puede ocasionar que el código sea difícil de leer. Para esto podemos usar las
+    llaves async y await de ES2017 y, simplificar el manejo de las promesas. </a>
+
+
+
 
   </pre>
   <script>
@@ -1402,9 +1496,149 @@
 
   <div class="padre">
   <div class="hijo">
-  <h4></h4>
-
+  <h4>Arrays copias</h4>
+  Para copiar un array si usamos = y modificamos el 2do array el primero tambien se vera afectado
   <pre>
+  <a href="">//Para duplicar un array sin tenerlos referenciados se puede usar</a>
+  const players = ['uno','dos','tres'];
+
+  const players2 = Array.from(players)
+
+  o
+
+  const players3 = [...players]
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Objetos Copias</h4>
+  Para tener dos instancias o mas de un objeto sin que esten referenciadas entre si usar:
+  <pre>
+  const person = {
+    name: 'wes bos';
+    age: 80;
+  }
+
+  <a href="">//creando otro objeto y agregando una propiedad</a>
+
+  const capitan = Object.assign({}, person, {telefono: 3423423});
+
+  o
+
+  const comandante = {...person}; <a href="">//proximamente</a>
+
+  <a href="">//si el objeto tiene una propiedad otro objeto como:</a>
+  social:{
+    twitter:'@dasda',
+    face:'asadsa'
+  }
+  <a href="">//entonces twitter y facebook son nivel 2, por lo que si estaran linkeadeas
+    //referenciadas al objeto original</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>Date and Time</h4>
+  avaScript provides you with the ability to access the date and time of your users' local computer,
+  which can be quite useful at times.
+  <pre>
+    <a href="">//Fecha</a>
+    var currentDate = new Date(),
+        day = currentDate.getDate(),
+        month = currentDate.getMonth() + 1,
+        year = currentDate.getFullYear();
+    document.write(day + "/" + month + "/" + year) <a href="">//  10/09/2018</a>
+
+    <a href="">//Hora</a>
+    var currentTime = new Date(),
+      hours = currentTime.getHours(),
+      minutes = currentTime.getMinutes();
+
+  	if (minutes < 10) {
+  	 minutes = "0" + minutes;
+    }
+
+  	<a href="">document.write(hours + ":" + minutes) // 23:43</a>
+  </pre>
+  <script>
+
+  </script>
+
+  </div>
+  </div>
+
+  <div class="padre">
+  <div class="hijo">
+  <h4>destructuring assignment </h4>
+  La sintaxis de destructuring assignment es una expresión de JavaScript que
+  hace posible la extracción de datos de arreglos u objetos
+  usando una sintaxis que equivale a la construcción de arreglos y objetos literales.
+  <pre>
+    <a href="">//Destructuring nos da una manera de extraer datos de
+      objetos o arreglos y asignarlos a variables.</a>
+
+  <a href="">Destructuracion de un array</a>
+  var foo = ["uno", "dos", "tres"];
+
+  <a href="">// sin destructuración</a>
+  var uno  = foo[0];
+  var dos  = foo[1];
+  var tres = foo[2]; // asignación en tres lineas
+
+  <a href="">// con destructuración</a>
+  var [uno, dos, tres] = foo; // asignación en una sola linea
+
+  <a href="">------------</a>
+  <a href="">Cambiando orden de las variables</a>
+  var a = 1;
+  var b = 3;
+
+  [a, b] = [b, a];
+
+  <a href="">------------</a>
+  <a href="">Multiples valores de retorno</a>
+  <a href="">//Gracias a destructuring assignment, las funciones pueden retornar multiples valores. </a>
+  function f() {
+  return [1, 2];
+  }
+
+  var a, b;
+  [a, b] = f();
+  console.log("A es " + a + " B es " + b);
+
+  <a href="">--------------</a>
+  <a href="">Objetos</a>
+  <a href="">//Así como con los arrays, con objetos también podemos utilizar las características de
+    destructuring, imaginemos un objeto de la forma</a>
+
+  const objeto = {
+    a: ‘casa’,
+    b: ‘apartamento’
+  };
+
+  <a href="">Como asignariamos las propiedades de_ objeto_ a variables en ES5</a>
+
+  var a = objeto.a;
+  var b = objeto.b;
+
+  <a href="">Con destructuring en ES2015, lo hariamos asi</a>
+
+  const {a,b} = objeto;
+
+  <a href="">//a = 'casa'</a>
+  <a href="">//b = 'apartamento</a>'
 
   </pre>
   <script>
@@ -1416,37 +1650,43 @@
 
   <div class="padre">
   <div class="hijo">
-  <h4></h4>
-
+  <h4>Spread</h4>
+  El operador de propagación spread operator permite que una expresión sea expandida en
+  situaciones donde se esperan múltiples argumentos
+  (llamadas a funciones) o múltiples elementos (arrays literales).
   <pre>
+    function sum(x, y, z) {
+    return x + y + z;
+  }
 
-  </pre>
-  <script>
+  const numbers = [1, 2, 3];
 
-  </script>
+  console.log(sum(...numbers));
+  <a href="">// expected output: 6</a>
 
-  </div>
-  </div>
+  <a href="">---------------</a>
+  var parts = ['shoulders', 'knees'];
+  var lyrics = ['head', ...parts, 'and', 'toes'];
+  <a href="">// ["head", "shoulders", "knees", "and", "toes"]</a>
 
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
+  <a href="">------------</a>
+  <a href="">Una forma mejor para concatenar arreglos</a>
 
-  <pre>
+  var arr1 = [0, 1, 2];
+  var arr2 = [3, 4, 5];
+  arr1 = [...arr1, ...arr2]; <a href="">// 0 1 2 3 4 5 6</a>
 
-  </pre>
-  <script>
+  <a href="">--------------------------</a>
+  <a href="">Spread en literales tipo Objeto</a>
+  var obj1 = { foo: 'bar', x: 42 };
+  var obj2 = { foo: 'baz', y: 13 };
 
-  </script>
+  var clonedObj = { ...obj1 };
+  <a href="">// Object { foo: "bar", x: 42 }</a>
 
-  </div>
-  </div>
-
-  <div class="padre">
-  <div class="hijo">
-  <h4></h4>
-
-  <pre>
+  var mergedObj = { ...obj1, ...obj2 }; <a href="">//solo se agrego la propiedad y: del obj2</a>
+  <a href="">// Object { foo: "baz", x: 42, y: 13 }</a>
+  
 
   </pre>
   <script>
